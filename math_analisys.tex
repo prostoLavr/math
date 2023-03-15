@@ -1,0 +1,48 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{cmap} % Поиск в документе
+\usepackage[T2A]{fontenc}  % Внутреннюю кодировку TeX
+\usepackage[utf8]{inputenc} % Кодировка файла
+\usepackage[english,russian]{babel}  % Языки
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % Математические плюшки
+\usepackage{graphicx} % Изображения
+\usepackage{pgfplots} % Графики
+\pgfplotsset{width=10cm,compat=1.9}
+\pgfplotsset{samples=100}
+
+
+\author{Лаврентий Наумов}
+\title{Формулы приведения sin и cos}
+\date{\today}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение} % Создание теорем
+\newtheorem{principle}{Правило} % Создание теорем
+\newtheorem{problem}{Задача}
+\theoremstyle{theorem}
+\newtheorem{theorem}{Теорема}
+
+
+\begin{document}
+    \maketitle
+    \section{Приведение}
+    \begin{tikzpicture}
+        \begin{axis}[
+            domain=-6:6,
+            xlabel = {$x$},
+            ylabel = {$y$},
+            minor tick num = 1,
+            width=400px,
+            legend pos=outer north east
+            ]
+            \addplot[blue] {sin(deg(x))};
+            \addplot[red] {cos(deg(x))};
+            \addplot[green] {-sin(deg(x))};
+            \addplot[orange] {-cos(deg(x))};
+            \legend{$\sin(x)$,$\cos(x)$,$-\sin(x)$,$-\cos(x)$}
+        \end{axis}
+    \end{tikzpicture}
+	Заметим, что интервал между соседними точкмми экстремума равен $\frac{\pi}{2}$. Следовательно, перейти из одной функции в сосденюю можно при помощи прибавления к аргументу функции и вычитания из него  $\frac{\pi}{2}$. Вспомним, что движение в правую часть - это вычитание из аргумента функции, и движение в левую часть - сложение с аргументом функции. Следовательно мы можем разместить пики фукнций в некотором порядке $\sin(x)$, $\cos(x)$, $-\sin(x)$, $-\cos(x)$ и перемещается по функциям с прибавлением $\frac{\pi}{2}$ в левую сторону и с вычетанием $\frac{\pi}{2}$  в правую. Например, $\cos(x -\frac{\pi}{2})=\sin x$. Цикл функций замкнутый, поэтому переход $\cos(x-\frac{3\pi}{2}) = -\sin x$ не является ошибочным. В данном примере, мы вычитали $\frac{3\pi}{2}$, но ничего страшного нет, ведь это просто вычитание $\frac{\pi}{2}$ три раза. Аналогично, переход $-\sin(x + \pi) = - \sin(x + \frac{2\pi}{2}) = \sin x$ корректен.
+
+
+
+\end{document}
